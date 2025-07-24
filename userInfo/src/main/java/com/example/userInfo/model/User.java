@@ -1,6 +1,13 @@
 package com.example.userInfo.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users_table")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String email;

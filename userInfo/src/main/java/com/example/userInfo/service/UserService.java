@@ -24,4 +24,19 @@ public class UserService {
         return userRepo.findAll();
     }
 
+//    get the user using its ID
+    public User getUserById(Long id) {
+        return userRepo.findById(id).orElse(null);
+    }
+
+    public User updateUser(Long id, User updatedUser) {
+        return userRepo.findById(id).map(user -> {
+            user.setName(updatedUser.getName());
+            user.setEmail(updatedUser.getEmail());
+            return userRepo.save(user);
+        }).orElse(null);
+    }
+
+
+
 }
